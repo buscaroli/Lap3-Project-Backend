@@ -1,8 +1,8 @@
 const { Server } = require('socket.io')
 const server = require('./server')
 const io = new Server(server)
-// fakeData
 
+// fakeData
 const results = [
   { name: 'Mark', score: 58 },
   { name: 'Sue', score: 90 },
@@ -25,10 +25,23 @@ const getTopX = (data, n) => {
   return newArray
 }
 
-io.on('connection', (socket) => {
-  console.log('a player just connected')
+const connectionsLimit = 3
 
+io.on('connection', (socket) => {
+  // limiting the number of players to a maximum of 'connectionsLimit'
+  if (io.engine.clientsCount > connectionsLimit) {
+    socket.emit('err', {
+      message: `reached the limit of ${connectionsLimit} connections`,
+    })
+    socket.disconnect()
+    console.log(`Client ${socket.id} has been disconnected`)
+    return
+  }
+
+  console.log('a player just connected')
+  console.log('clientid: ', socket.id)
   console.log('top 5', getTopX(results, 5))
+
   socket.on('disconnect', () => {
     console.log('user disconnected')
   })
