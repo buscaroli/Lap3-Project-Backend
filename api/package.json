@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run ./index.js",
-    "dev": "nodemon run ./index.js",
+    "start": "npm run ./src/index.js",
+    "dev": "nodemon run ./src/index.js",
     "test": "jest --watchAll"
   },
   "keywords": [],
@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "socket.io": "^4.5.1"
   },
   "devDependencies": {
     "jest": "^28.1.1",
