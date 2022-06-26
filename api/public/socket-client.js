@@ -1,4 +1,8 @@
-let socket = io()
+let socket = io({
+  query: {
+    name: 'Sally',
+  },
+})
 
 let form = document.getElementById('form')
 let input = document.getElementById('input')
