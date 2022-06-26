@@ -4,7 +4,7 @@ const io = new Server(server)
 const Player = require('./models/player')
 const Game = require('./models/game')
 
-// fakeData
+// fakeData - to be removed once DB Up and Running
 const results = [
   { name: 'Mark', score: 58 },
   { name: 'Sue', score: 90 },
@@ -22,20 +22,20 @@ const results = [
 ]
 
 // returns the users in the topX (top5: getTopX(results, 5))
+// Currently getting hardcoded data
 const getTopX = (data, n) => {
   const newArray = data.sort((a, b) => b.score - a.score).slice(0, n)
   return newArray
 }
 
-// max number of players
-const connectionsLimit = 4
+// creating an instance of the Game object
 let game
-let playersIds = []
+
 io.on('connection', (socket) => {
   // limiting the number of players to a maximum of 'connectionsLimit'
-  if (io.engine.clientsCount > connectionsLimit) {
+  if (io.engine.clientsCount > Game.maxPlayers) {
     socket.emit('err', {
-      message: `reached the limit of ${connectionsLimit} connections`,
+      message: `reached the limit of ${Game.maxPlayers} connections`,
     })
     socket.disconnect()
     console.log(`Client ${socket.id} has been disconnected`)
@@ -45,6 +45,7 @@ io.on('connection', (socket) => {
   console.log('a player just connected')
   console.log('clientid: ', socket.id)
   console.log('socket -> ', socket.handshake.query.name)
+
   // console.log('top 5', getTopX(results, 5))
   // save the connection Id and the player Name
   const playerId = socket.id
@@ -53,10 +54,17 @@ io.on('connection', (socket) => {
   // create a new player and add them to the Game static array
   const player = new Player(playerId, playerName)
   Game.players.push(player)
+  console.log('players: ', Game.players)
 
   socket.on('disconnect', () => {
-    console.log('player disconnected')
-    // send notification so client can hide player
+    console.log('player disconnected, socket.id', socket.id)
+
+    // remove player from list of players
+    Game.removePlayerFromList(socket.id)
+
+    // send notification so client can hide player that has left
+    socket.emit('playerLeft', Game.players)
+    console.log('player left, remaining players: ', Game.players)
   })
 
   // when the start button is pressed on the client;
@@ -91,6 +99,9 @@ io.on('connection', (socket) => {
     } else {
       console.log('No questions left')
       socket.emit('noQuestionsLeft', { score: player.getPlayerScore() })
+
+      //reset the player's score in case they are staying for another game without disconnecting/reconnecting
+      player.resetPlayerScore()
     }
   })
 

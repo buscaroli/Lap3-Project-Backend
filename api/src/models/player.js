@@ -15,6 +15,10 @@ class Player {
     console.log('player.js - questionScore -> ', questionScore)
     this.score += questionScore
   }
+
+  resetPlayerScore() {
+    this.score = 0
+  }
 }
 
 module.exports = Player

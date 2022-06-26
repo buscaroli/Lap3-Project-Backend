@@ -6,11 +6,16 @@ class Game {
     this.questionsAmount = questionsAmount
     this.difficulty = difficulty
     this.questionsList = []
-    this.maxPlayers = 4
     this.counter = 0
   }
 
+  static maxPlayers = 4
   static players = []
+
+  static removePlayerFromList(id) {
+    const newArray = Game.players.filter((player) => player.id !== id)
+    Game.players = newArray
+  }
 
   nextQuestion() {
     if (this.questionsList.length > 0 && this.counter < this.questionsAmount) {
