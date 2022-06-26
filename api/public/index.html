@@ -81,7 +81,9 @@
   <form id="form" action="">
     <input id="input" autocomplete="off" /><button>Send</button>
   </form>
+  <!-- socket.io exports an io global and connects -->
   <script src="/socket.io/socket.io.js"></script>
-  <script src="./socket.js"></script>
+  <!-- will keep the development client logic in a local js file until having the proper react client ready -->
+  <script src="./socket-client.js"></script>
 </body>
 </html>
