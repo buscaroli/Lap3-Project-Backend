@@ -15,6 +15,7 @@ const getTopX = (data, n) => {
 let game
 
 io.on('connection', (socket) => {
+  console.log('GP length', Game.players.length)
   // limiting the number of players to a maximum of 'connectionsLimit'
   if (io.engine.clientsCount > Game.maxPlayers) {
     socket.emit('err', {
@@ -23,6 +24,12 @@ io.on('connection', (socket) => {
     socket.disconnect()
     console.log(`Client ${socket.id} has been disconnected`)
     return
+  }
+
+  if (Game.players.length === 0) {
+    socket.emit('hostStatus', { hostStatus: true })
+  } else {
+    socket.emit('hostStatus', { hostStatus: false })
   }
 
   console.log('a player just connected')

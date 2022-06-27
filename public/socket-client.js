@@ -15,3 +15,9 @@ form.addEventListener('submit', function (e) {
     input.value = ''
   }
 })
+
+socket.on('hostStatus', (data) => {
+  data.hostStatus === true
+    ? console.log('You are the Host')
+    : console.log(' You are NOT the host')
+})
