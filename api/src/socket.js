@@ -4,23 +4,6 @@ const io = new Server(server)
 const Player = require('./models/player')
 const Game = require('./models/game')
 
-// fakeData - to be removed once DB Up and Running
-const results = [
-  { name: 'Mark', score: 58 },
-  { name: 'Sue', score: 90 },
-  { name: 'John', score: 80 },
-  { name: 'George', score: 75 },
-  { name: 'Manny', score: 85 },
-  { name: 'Maurice', score: 100 },
-  { name: 'Jenn', score: 80 },
-  { name: 'Roy', score: 82 },
-  { name: 'Monty', score: 74 },
-  { name: 'James', score: 65 },
-  { name: 'Claire', score: 78 },
-  { name: 'Amanda', score: 92 },
-  { name: 'Sarah', score: 66 },
-]
-
 // returns the users in the topX (top5: getTopX(results, 5))
 // Currently getting hardcoded data
 const getTopX = (data, n) => {
@@ -76,11 +59,14 @@ io.on('connection', (socket) => {
       game = new Game(category, questionsAmount, difficulty)
       await game.fetchQuestions()
       const question = game.nextQuestion()
+      if (question) {
+        console.log('***********', game.questionsList)
+        console.log(`question is `, question)
 
-      console.log('***********', game.questionsList)
-      console.log(`question is `, question)
-
-      socket.emit('ready', question)
+        socket.emit('ready', question)
+      } else {
+        console.log('socket.js - on start - No more questions ')
+      }
     } catch (err) {
       console.log('Error retrieving quizzes: ', err)
     }
@@ -101,11 +87,16 @@ io.on('connection', (socket) => {
       console.log('No questions left')
       // add player's details to the DB
       // comment out until DB setup properly
-      // Game.addScoreToDatabase(player)
+      console.log('*=*=* ', player)
+      console.log('AAAAAAAA ', Game.players)
+      Game.addScoreToDatabase(player)
 
       // tell the clients that there are no questions left
       // and return their score for the current game
-      socket.emit('noQuestionsLeft', { score: player.getPlayerScore() })
+      socket.emit('noQuestionsLeft', {
+        score: player.getPlayerScore(),
+        playersData: Game.players,
+      })
 
       //reset the player's score in case they are staying for another game without disconnecting/reconnecting
       player.resetPlayerScore()

@@ -23,13 +23,12 @@ class Game {
       try {
         const now = new Date()
         const nowString = now.toString().slice(0, 16).trim()
-        const id = this.id
         const newPlayerData = await db.query(
           `INSERT INTO scores (id, name, score, time) VALUES ($1, $2, $3, $4) RETURNING *;`,
           [id, name, score, nowString]
         )
 
-        const newPlayer = new Score(newPlayerData.rows[0])
+        const newPlayer = new Player(newPlayerData.rows[0])
         resolve(newPlayer)
       } catch (err) {
         reject('Unable to add the score.')
