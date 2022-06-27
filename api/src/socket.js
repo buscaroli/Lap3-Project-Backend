@@ -99,6 +99,7 @@ io.on('connection', (socket) => {
     } else {
       console.log('No questions left')
       // add player's details to the DB
+      // comment out until DB setup properly
       // Game.addScoreToDatabase(player)
 
       // tell the clients that there are no questions left
