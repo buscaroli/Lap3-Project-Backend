@@ -4,13 +4,6 @@ const io = new Server(server)
 const Player = require('./models/player')
 const Game = require('./models/game')
 
-// returns the users in the topX (top5: getTopX(results, 5))
-// Currently getting hardcoded data
-const getTopX = (data, n) => {
-  const newArray = data.sort((a, b) => b.score - a.score).slice(0, n)
-  return newArray
-}
-
 // creating an instance of the Game object
 let game
 
@@ -20,16 +13,22 @@ io.on('connection', (socket) => {
     socket.emit('err', {
       message: `reached the limit of ${Game.maxPlayers} connections`,
     })
+    socket.emit('hostStatus', { hostStatus: false })
     socket.disconnect()
     console.log(`Client ${socket.id} has been disconnected`)
     return
+  }
+
+  if (Game.players.length === 0) {
+    socket.emit('hostStatus', { hostStatus: true })
+  } else {
+    socket.emit('hostStatus', { hostStatus: false })
   }
 
   console.log('a player just connected')
   console.log('clientid: ', socket.id)
   console.log('socket -> ', socket.handshake.query.name)
 
-  // console.log('top 5', getTopX(results, 5))
   // save the connection Id and the player Name
   const playerId = socket.id
   const playerName = socket.handshake.query.name
@@ -45,8 +44,8 @@ io.on('connection', (socket) => {
     // remove player from list of players
     Game.removePlayerFromList(socket.id)
 
-    // send notification so client can hide player that has left
-    socket.emit('playerLeft', Game.players)
+    // send notification so client can hide players that have left
+    socket.emit('playersLeft', Game.players)
     console.log('player left, remaining players: ', Game.players)
   })
 
@@ -82,7 +81,7 @@ io.on('connection', (socket) => {
     console.log('playerScore ')
     const question = game.nextQuestion()
     if (question) {
-      socket.emit('ready', question)
+      socket.emit('ready', { question, playersData: Game.players })
     } else {
       console.log('No questions left')
       // add player's details to the DB

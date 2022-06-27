@@ -11,6 +11,10 @@ app.use(express.json())
 const publicDirPath = path.join(__dirname, '../public')
 app.use(express.static(publicDirPath))
 
+// serving the route for the leaderboard
+const scoreRoutes = require('./controllers/scores')
+app.use('/scores', scoreRoutes)
+
 const server = http.createServer(app)
 
 module.exports = server
