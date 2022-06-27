@@ -15,3 +15,14 @@ form.addEventListener('submit', function (e) {
     input.value = ''
   }
 })
+
+const controls = document.querySelector('.hostControls')
+
+socket.on('hostStatus', (data) => {
+  if (data.hostStatus === true) {
+    console.log('You are the Host')
+  } else {
+    console.log(' You are NOT the host')
+    controls.classList.add('disabled')
+  }
+})

@@ -72,6 +72,29 @@
     #messages>li:nth-child(odd) {
       background: #efefef;
     }
+    .hostControls, .questionWrapper {
+      display: inline-block;
+    }
+
+    .left {
+      height: 600px;
+      width: 200px;
+      background-color: pink;
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    .right {
+      height: 600px;
+      width: 400px;
+      background-color: greenyellow;
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    .disabled {
+      display: none;
+    }
   </style>
 
 </head>
@@ -81,6 +104,8 @@
   <form id="form" action="">
     <input id="input" autocomplete="off" /><button>Send</button>
   </form>
+  <div class="hostControls left">Controls</div>
+  <div class="questionWrapper right">Questions</div>
   <!-- socket.io exports an io global and connects -->
   <script src="/socket.io/socket.io.js"></script>
   <!-- will keep the development client logic in a local js file until having the proper react client ready -->
