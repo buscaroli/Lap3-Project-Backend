@@ -40,7 +40,7 @@ class Game {
     return new Promise(async (resolve, reject) => {
       try {
         const leaderboard = await db.query(
-          `SELECT * FROM scores ORDER BY score DESC LIMIT 10`
+          `SELECT * FROM scores ORDER BY score DESC LIMIT 10;`
         )
         resolve(leaderboard)
       } catch (err) {
