@@ -20,6 +20,7 @@ io.on('connection', (socket) => {
     socket.emit('err', {
       message: `reached the limit of ${Game.maxPlayers} connections`,
     })
+    socket.emit('hostStatus', { hostStatus: false })
     socket.disconnect()
     console.log(`Client ${socket.id} has been disconnected`)
     return
