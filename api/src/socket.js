@@ -98,6 +98,11 @@ io.on('connection', (socket) => {
       socket.emit('ready', question)
     } else {
       console.log('No questions left')
+      // add player's details to the DB
+      // Game.addScoreToDatabase(player)
+
+      // tell the clients that there are no questions left
+      // and return their score for the current game
       socket.emit('noQuestionsLeft', { score: player.getPlayerScore() })
 
       //reset the player's score in case they are staying for another game without disconnecting/reconnecting
