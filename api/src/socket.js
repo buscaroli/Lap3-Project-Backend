@@ -91,7 +91,8 @@ io.on('connection', (socket) => {
   // the local score and the top scores from the DB (to be implemented)
   socket.on('retrieveQuestion', ({ questionScore }) => {
     console.log('socket.js - questionScore -> ', questionScore)
-    player.updatePlayerScore({ questionScore })
+
+    player.updatePlayerScore({ questionScore, score: player.getPlayerScore() })
     console.log('playerScore ')
     const question = game.nextQuestion()
     if (question) {
