@@ -1,4 +1,4 @@
-INSERT INTO scores (id, name, score, time)
+INSERT INTO scores (id, name, score, time) 
 VALUES
   ('00001', 'Mark', 20, '10 Jun 2022'),
   ('00002', 'Sue', 14, '10 Jun 2022'),
