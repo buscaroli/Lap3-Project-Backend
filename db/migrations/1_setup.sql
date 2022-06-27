@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS scores;
+
+CREATE TABLE scores (
+  id VARCHAR(50),
+  name VARCHAR(100) NOT NULL,
+  score INT NOT NULL,
+  time TIMESTAMP
+
+);

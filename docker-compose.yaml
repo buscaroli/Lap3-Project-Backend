@@ -1,0 +1,30 @@
+version: '3'
+services:
+  server:
+    image: node:12.18.4
+    working_dir: /code
+    ports:
+      - 3000:3000
+    environment:
+      - PGUSER=quizuser
+      - PGHOST=db
+      - PGPASSWORD=quizpw
+      - PGDATABASE=scores
+      - PGPORT=5432
+    depends_on:
+      - db
+    volumes:
+      - type: bind
+        source: ./api
+        target: /code
+    command: bash -c "npm install && npm run dev"
+
+  db:
+    image: postgres:12.4
+    volumes:
+      - "./db/migrations:/docker-entrypoint-initdb.d/:ro"
+    environment:
+      - POSTGRES_DB=scores
+      - POSTGRES_USER=quizuser
+      - POSTGRES_PASSWORD=quizpw
+
