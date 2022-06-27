@@ -36,6 +36,19 @@ class Game {
     })
   }
 
+  static getLeaderboard() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const leaderboard = await db.query(
+          `SELECT * FROM scores ORDER BY score DESC LIMIT 10`
+        )
+        resolve(leaderboard)
+      } catch (err) {
+        reject('Can not get the leaderboard.')
+      }
+    })
+  }
+
   nextQuestion() {
     if (this.questionsList.length > 0 && this.counter < this.questionsAmount) {
       const question = this.questionsList[this.counter]

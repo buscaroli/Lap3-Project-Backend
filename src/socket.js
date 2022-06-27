@@ -15,7 +15,6 @@ const getTopX = (data, n) => {
 let game
 
 io.on('connection', (socket) => {
-  console.log('GP length', Game.players.length)
   // limiting the number of players to a maximum of 'connectionsLimit'
   if (io.engine.clientsCount > Game.maxPlayers) {
     socket.emit('err', {
@@ -52,8 +51,8 @@ io.on('connection', (socket) => {
     // remove player from list of players
     Game.removePlayerFromList(socket.id)
 
-    // send notification so client can hide player that has left
-    socket.emit('playerLeft', Game.players)
+    // send notification so client can hide players that have left
+    socket.emit('playersLeft', Game.players)
     console.log('player left, remaining players: ', Game.players)
   })
 
