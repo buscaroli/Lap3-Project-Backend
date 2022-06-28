@@ -50,6 +50,12 @@ class Game {
     })
   }
 
+  static getHostId() {
+    if (Game.players.length > 0) {
+      return Game.players[0].id
+    }
+  }
+
   nextQuestion() {
     if (this.questionsList.length > 0 && this.counter < this.questionsAmount) {
       const question = this.questionsList[this.counter]
