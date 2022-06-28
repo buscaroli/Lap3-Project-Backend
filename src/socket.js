@@ -80,7 +80,7 @@ io.on('connection', (socket) => {
         console.log('***********', game.questionsList)
         console.log(`question is `, question)
 
-        // socket.emit('ready', { question, playersData: Game.players })
+        socket.emit('ready', { question, playersData: Game.players })
       } else {
         console.log('socket.js - on start - No more questions ')
       }
