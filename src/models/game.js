@@ -60,9 +60,16 @@ class Game {
     }
   }
 
-  async fetchQuestions(category, difficulty, questionsAmount) {
+  async fetchQuestions() {
+    console.log(
+      `fetchQuestions: ${this.category} ${this.difficulty} ${this.questionsAmount}`
+    )
     try {
-      const data = await getQuestions(category, difficulty, questionsAmount)
+      const data = await getQuestions(
+        this.category,
+        this.difficulty,
+        this.questionsAmount
+      )
       this.questionsList = data.data.results
     } catch (err) {
       console.log('Error: ', err)

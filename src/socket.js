@@ -1,6 +1,10 @@
-const { Server } = require('socket.io')
 const server = require('./server')
-const io = new Server(server)
+const io = require('socket.io')(server, {
+  cors: {
+    origin: ['http://localhost:3000', 'https://lap3quizzer.herokuapp.com/'],
+    methods: ['GET', 'POST'],
+  },
+})
 const Player = require('./models/player')
 const Game = require('./models/game')
 

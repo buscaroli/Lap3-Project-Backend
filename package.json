@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
-    "test": "jest --watchAll"
+    "test": "jest --setupFiles ./src/tests/config.js --watchAll --detectOpenHandles --runInBand --verbose",
+    "coverage": "jest --coverage --setupFiles ./src/tests/config.js --watchAll --detectOpenHandles --runInBand --verbose"
   },
   "engines": {
     "node": "12.x"
