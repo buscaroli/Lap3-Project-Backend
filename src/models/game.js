@@ -42,6 +42,7 @@ class Game {
         const leaderboard = await db.query(
           `SELECT * FROM scores ORDER BY score DESC LIMIT 10;`
         )
+        console.log('leaderboard -> ', leaderboard)
         resolve(leaderboard)
       } catch (err) {
         reject('Can not get the leaderboard.')
