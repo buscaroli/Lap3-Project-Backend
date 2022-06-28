@@ -1,10 +1,11 @@
 const server = require('./server')
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://about-time.netlify.app/'],
     methods: ['GET', 'POST'],
   },
 })
+// https://about-time.netlify.app/
 const Player = require('./models/player')
 const Game = require('./models/game')
 
