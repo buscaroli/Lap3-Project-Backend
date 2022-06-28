@@ -1,7 +1,11 @@
 const server = require('./server')
 const io = require('socket.io')(server, {
   cors: {
-    origin: ['http://localhost:3000', 'https://about-time.netlify.app/'],
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:4000',
+      'https://about-time.netlify.app/',
+    ],
     methods: ['GET', 'POST'],
   },
 })
@@ -66,7 +70,7 @@ io.on('connection', (socket) => {
         console.log('***********', game.questionsList)
         console.log(`question is `, question)
 
-        socket.emit('ready', question)
+        socket.emit('ready', { question, playersData: Game.players })
       } else {
         console.log('socket.js - on start - No more questions ')
       }
