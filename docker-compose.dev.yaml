@@ -1,0 +1,30 @@
+services:
+  server:
+    container_name: quizzer_dev_server
+    ports: 
+      - 3000:3000
+    environment: 
+      - PGUSER=quizuser
+      - PGHOST=db
+      - PGPASSWORD=quizpw
+      - PGDATABASE=quizzer
+      - PGPORT=5432
+      - NODE_ENV=development
+    depends_on:
+      - db
+    command: bash -c "npm install && npm run dev"
+
+  db:
+    container_name: quizzer_dev_db
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+    environment: 
+      - POSTGRES_DB=quizzer
+      - POSTGRES_USER=quizuser
+      - POSTGRES_PASSWORD=quizpw
+volumes:
+  dbdata:
+networks: 
+  default:
+    name: quiz_api_dev
+
