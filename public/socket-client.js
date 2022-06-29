@@ -26,3 +26,14 @@ socket.on('hostStatus', (data) => {
     controls.classList.add('disabled')
   }
 })
+
+socket.on('playerHasLeft', () => {
+  console.log('Player has left')
+})
+
+socket.on('hostHasLeft', ({ id }) => {
+  console.log('Host has left')
+  console.log('new host id: ', id)
+  console.log('player id: ', socket.id)
+  if (id === socket.id) controls.classList.remove('disabled')
+})

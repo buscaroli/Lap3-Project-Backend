@@ -40,13 +40,20 @@ class Game {
     return new Promise(async (resolve, reject) => {
       try {
         const leaderboard = await db.query(
-          `SELECT * FROM scores ORDER BY score DESC LIMIT 10`
+          `SELECT * FROM scores ORDER BY score DESC LIMIT 10;`
         )
+        // console.log('leaderboard -> ', leaderboard)
         resolve(leaderboard)
       } catch (err) {
         reject('Can not get the leaderboard.')
       }
     })
+  }
+
+  static getHostId() {
+    if (Game.players.length > 0) {
+      return Game.players[0].id
+    }
   }
 
   nextQuestion() {

@@ -1,10 +1,11 @@
 const server = require('./server')
 const io = require('socket.io')(server, {
   cors: {
-    origin: ['http://localhost:3000', 'https://lap3quizzer.herokuapp.com/'],
+    origin: ['http://localhost:3000', 'https://about-time.netlify.app/'],
     methods: ['GET', 'POST'],
   },
 })
+// https://about-time.netlify.app/
 const Player = require('./models/player')
 const Game = require('./models/game')
 
@@ -43,14 +44,27 @@ io.on('connection', (socket) => {
   console.log('players: ', Game.players)
 
   socket.on('disconnect', () => {
-    console.log('player disconnected, socket.id', socket.id)
+    let hostId = Game.getHostId()
+    let currentPlayerId = socket.id
+
+    // console.log('player0 id: ', Game.players[0].id)
+    console.log('socket.js player id: ', socket.id)
+
+    // send notification that the host has left
+    // if (currentPlayerId === hostId) {
+    //   console.log('host Has Left')
+    //   if (Game.players.length > 0) {
+    //     console.log('newHost id: ', Game.players[0].id)
+    //     socket.emit('hostHasLeft', { id: Game.players[0].id })
+    //   }
+    // } else {
+    //   // send notification so client can hide player that have left
+    //   socket.emit('playerHasLeft', Game.players)
+    //   console.log('player left, remaining players: ', Game.players)
+    // }
 
     // remove player from list of players
     Game.removePlayerFromList(socket.id)
-
-    // send notification so client can hide players that have left
-    socket.emit('playersLeft', Game.players)
-    console.log('player left, remaining players: ', Game.players)
   })
 
   // when the start button is pressed on the client;
@@ -66,7 +80,7 @@ io.on('connection', (socket) => {
         console.log('***********', game.questionsList)
         console.log(`question is `, question)
 
-        socket.emit('ready', question)
+        socket.emit('ready', { question, playersData: Game.players })
       } else {
         console.log('socket.js - on start - No more questions ')
       }

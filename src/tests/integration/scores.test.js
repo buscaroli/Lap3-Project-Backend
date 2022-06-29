@@ -16,6 +16,11 @@ describe('scores', () => {
     await api.close()
   })
 
+  it('receives an HTTP status od 200 when connecting to the server', async () => {
+    const res = await request(api).get('/scores')
+    expect(res.status).toBe(200)
+  })
+
   it('should return list of 10 scores', async () => {
     const res = await request(api).get('/scores')
     expect(res.body.rows).toHaveLength(10)
