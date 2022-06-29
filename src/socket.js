@@ -75,15 +75,9 @@ io.on('connection', (socket) => {
     try {
       game = new Game(category, questionsAmount, difficulty)
       await game.fetchQuestions()
-      // const question = game.nextQuestion()
-      if (question) {
-        console.log('***********', game.questionsList)
-        console.log(`question is `, question)
 
-        io.emit('ready', { questions: Game.questionsList })
-      } else {
-        console.log('socket.js - on start - No more questions ')
-      }
+      console.log('***********', game.questionsList)
+      io.emit('ready', { questions: Game.questionsList })
     } catch (err) {
       console.log('Error retrieving quizzes: ', err)
     }
@@ -120,6 +114,8 @@ io.on('connection', (socket) => {
   //   }
 
   socket.on('gameover', () => {
+    console.log('resetting player score (BEFORE) :', player.getPlayerScore())
     player.resetPlayerScore()
+    console.log('resetting player score (AFTER) :', player.getPlayerScore())
   })
 })
