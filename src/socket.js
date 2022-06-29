@@ -1,9 +1,7 @@
 const server = require('./server')
 const io = require('socket.io')(server, {
   cors: {
-
-    origin: ['http://localhost:3000', 'https://about-time.netlify.app/'],
-
+    origin: 'http://localhost:3000',
     methods: ['GET', 'POST'],
   },
 })
