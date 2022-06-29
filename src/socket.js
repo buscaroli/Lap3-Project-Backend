@@ -114,9 +114,11 @@ io.on('connection', (socket) => {
   //     player.resetPlayerScore()
   //   }
 
-  socket.on('name', () => {
+  socket.on('name', ({ name }) => {
     console.log('getPlayersData -> ', Game.players)
     console.log('AAAAAA ', socket.id)
+    console.log('BBBBBB', name)
+    player.updatePlayerName(name)
     socket.emit('scoreBoard', Game.players)
   })
 
