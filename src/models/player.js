@@ -21,7 +21,7 @@ class Player {
   }
 
   updatePlayerName(name) {
-    console.log('Updading player name to ', name)
+    console.log('Updating player name to ', name)
     this.name = name
   }
 }
