@@ -60,7 +60,7 @@ class Game {
     if (this.questionsList.length > 0 && this.counter < this.questionsAmount) {
       const question = this.questionsList[this.counter]
       this.counter++
-      console.log('game.js -> nextQuestion -> ', question)
+      // console.log('game.js -> nextQuestion -> ', question)
       return question
     } else {
       return null
@@ -68,9 +68,9 @@ class Game {
   }
 
   async fetchQuestions() {
-    console.log(
-      `fetchQuestions: ${this.category} ${this.difficulty} ${this.questionsAmount}`
-    )
+    // console.log(
+    //   `fetchQuestions: ${this.category} ${this.difficulty} ${this.questionsAmount}`
+    // )
     try {
       const data = await getQuestions(
         this.category,
