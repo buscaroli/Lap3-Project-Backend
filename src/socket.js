@@ -75,15 +75,9 @@ io.on('connection', (socket) => {
     try {
       game = new Game(category, questionsAmount, difficulty)
       await game.fetchQuestions()
-      // const question = game.nextQuestion()
-      if (question) {
-        console.log('***********', game.questionsList)
-        console.log(`question is `, question)
 
-        io.emit('ready', { questions: Game.questionsList })
-      } else {
-        console.log('socket.js - on start - No more questions ')
-      }
+      console.log('***********', game.questionsList)
+      io.emit('ready', { questions: game.questionsList })
     } catch (err) {
       console.log('Error retrieving quizzes: ', err)
     }
@@ -92,37 +86,36 @@ io.on('connection', (socket) => {
   // client asks for the next question (while sending the score for the previous Question eg 0, -1, +2)
   // if there are no more questions server should return
   // the local score and the top scores from the DB (to be implemented)
-  socket.on('retrieveQuestion', ({ questionScore }) => {
-    console.log('socket.js - questionScore -> ', questionScore)
+  // socket.on('retrieveQuestion', ({ questionScore }) => {
+  //   console.log('socket.js - questionScore -> ', questionScore)
 
-    player.updatePlayerScore({ questionScore, score: player.getPlayerScore() })
-    console.log('playerScore ')
-    const question = game.nextQuestion()
-    if (question) {
-      io.emit('ready', { question, playersData: Game.players })
-    } else {
-      console.log('No questions left')
-      // add player's details to the DB
-      // comment out until DB setup properly
-      console.log('*=*=* ', player)
-      console.log('AAAAAAAA ', Game.players)
-      Game.addScoreToDatabase(player)
+  //   player.updatePlayerScore({ questionScore, score: player.getPlayerScore() })
+  //   console.log('playerScore ')
+  //   // const question = game.nextQuestion()
+  //   if (question) {
+  //     io.emit('ready', { question, playersData: Game.players })
+  //   } else {
+  //     console.log('No questions left')
+  //     // add player's details to the DB
+  //     // comment out until DB setup properly
+  //     console.log('*=*=* ', player)
+  //     console.log('AAAAAAAA ', Game.players)
+  //     Game.addScoreToDatabase(player)
 
-      // tell the clients that there are no questions left
-      // and return their score for the current game
-      socket.emit('noQuestionsLeft', {
-        score: player.getPlayerScore(),
-        playersData: Game.players,
-      })
+  //     // tell the clients that there are no questions left
+  //     // and return their score for the current game
+  //     socket.emit('noQuestionsLeft', {
+  //       score: player.getPlayerScore(),
+  //       playersData: Game.players,
+  //     })
 
-      //reset the player's score in case they are staying for another game without disconnecting/reconnecting
-      player.resetPlayerScore()
-    }
-  })
+  //     //reset the player's score in case they are staying for another game without disconnecting/reconnecting
+  //     player.resetPlayerScore()
+  //   }
 
-  //
-  // won't be used, kept just for debugging
-  socket.on('chat message', (msg) => {
-    console.log('message: ', msg)
+  socket.on('gameover', () => {
+    console.log('resetting player score (BEFORE) :', player.getPlayerScore())
+    player.resetPlayerScore()
+    console.log('resetting player score (AFTER) :', player.getPlayerScore())
   })
 })
