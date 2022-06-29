@@ -3,8 +3,6 @@ const axios = require('axios')
 const getQuestions = async (category, difficulty, amount) => {
   const url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`
 
-  console.log('trivia.js - url -> ', url)
-
   try {
     const data = await axios(url)
     return data

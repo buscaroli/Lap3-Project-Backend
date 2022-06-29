@@ -7,4 +7,13 @@ describe('trivia', () => {
 
     expect(res.status).toBe(200)
   })
+
+  it('expects the fetch call to return an empty array if passing unsupported data', () => {
+    const throwing = async () => {
+      const res = await getQuestions(234, 'killer', 10000)
+      console.log('***** throwing * ', res.data)
+    }
+    expect(throwing).toThrow()
+    document()
+  })
 })
