@@ -24,8 +24,8 @@ io.on('connection', (socket) => {
     return
   }
   // console.log('***** ***** *****', socket.handshake.query.name)
-  // if (Game.players.length === 0) {
-  if (socket.handshake.query.name === 'admin') {
+  if (Game.players.length === 0) {
+    // if (socket.handshake.query.name === 'admin') {
     socket.emit('hostStatus', { hostStatus: true })
   } else {
     socket.emit('hostStatus', { hostStatus: false })
@@ -116,6 +116,7 @@ io.on('connection', (socket) => {
 
   socket.on('name', () => {
     console.log('getPlayersData -> ', Game.players)
+    console.log('AAAAAA ', socket.id)
     socket.emit('scoreBoard', Game.players)
   })
 

@@ -56,6 +56,17 @@ class Game {
     }
   }
 
+  static updatePlayerName({ id, name }) {
+    const updatedPlayerList = Game.players.map((player) => {
+      if (player.id === id) {
+        player.name = name
+      }
+      return player
+    })
+
+    Game.players = updatedPlayerList
+  }
+
   nextQuestion() {
     if (this.questionsList.length > 0 && this.counter < this.questionsAmount) {
       const question = this.questionsList[this.counter]
