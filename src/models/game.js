@@ -64,6 +64,7 @@ class Game {
       return player
     })
 
+    console.log('CCCCCC -> ', Game.players)
     Game.players = updatedPlayerList
   }
 
