@@ -75,12 +75,12 @@ io.on('connection', (socket) => {
     try {
       game = new Game(category, questionsAmount, difficulty)
       await game.fetchQuestions()
-      const question = game.nextQuestion()
+      // const question = game.nextQuestion()
       if (question) {
         console.log('***********', game.questionsList)
         console.log(`question is `, question)
 
-        io.emit('ready', { question, playersData: Game.players })
+        io.emit('ready', { questions: Game.questionsList })
       } else {
         console.log('socket.js - on start - No more questions ')
       }
