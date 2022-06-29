@@ -1,9 +1,7 @@
 const server = require('./server')
 const io = require('socket.io')(server, {
   cors: {
-
-    origin: ['http://localhost:3000', 'https://about-time.netlify.app/'],
-
+    origin: '*',
     methods: ['GET', 'POST'],
   },
 })
@@ -25,7 +23,7 @@ io.on('connection', (socket) => {
     console.log(`Client ${socket.id} has been disconnected`)
     return
   }
-
+  // console.log('***** ***** *****', socket.handshake.query.name)
   if (Game.players.length === 0) {
     socket.emit('hostStatus', { hostStatus: true })
   } else {
@@ -101,7 +99,7 @@ io.on('connection', (socket) => {
     console.log('playerScore ')
     const question = game.nextQuestion()
     if (question) {
-      socket.emit('ready', { question, playersData: Game.players })
+      io.emit('ready', { question, playersData: Game.players })
     } else {
       console.log('No questions left')
       // add player's details to the DB
