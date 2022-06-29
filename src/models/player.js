@@ -19,6 +19,10 @@ class Player {
   resetPlayerScore() {
     this.score = 0
   }
+
+  updatePlayerName(name) {
+    this.name = name
+  }
 }
 
 module.exports = Player
