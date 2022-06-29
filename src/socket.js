@@ -51,17 +51,17 @@ io.on('connection', (socket) => {
     console.log('socket.js player id: ', socket.id)
 
     // send notification that the host has left
-    if (currentPlayerId === hostId) {
-      console.log('host Has Left')
-      if (Game.players.length > 0) {
-        console.log('newHost id: ', Game.players[0].id)
-        socket.emit('hostHasLeft', { id: Game.players[0].id })
-      }
-    } else {
-      // send notification so client can hide player that have left
-      socket.emit('playerHasLeft', Game.players)
-      console.log('player left, remaining players: ', Game.players)
-    }
+    // if (currentPlayerId === hostId) {
+    //   console.log('host Has Left')
+    //   if (Game.players.length > 0) {
+    //     console.log('newHost id: ', Game.players[0].id)
+    //     socket.emit('hostHasLeft', { id: Game.players[0].id })
+    //   }
+    // } else {
+    //   // send notification so client can hide player that have left
+    //   socket.emit('playerHasLeft', Game.players)
+    //   console.log('player left, remaining players: ', Game.players)
+    // }
 
     // remove player from list of players
     Game.removePlayerFromList(socket.id)
