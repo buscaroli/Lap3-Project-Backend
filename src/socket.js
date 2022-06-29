@@ -77,7 +77,7 @@ io.on('connection', (socket) => {
       await game.fetchQuestions()
 
       console.log('***********', game.questionsList)
-      io.emit('ready', { questions: Game.questionsList })
+      io.emit('ready', { questions: game.questionsList })
     } catch (err) {
       console.log('Error retrieving quizzes: ', err)
     }
