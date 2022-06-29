@@ -59,7 +59,7 @@ class Game {
   static updatePlayerName({ id, name }) {
     Game.players.forEach((player) => {
       if (player.id === id) {
-        player.name = name
+        player.name = 'AAAAA'
       }
       console.log('DDDDD ->', player)
     })
