@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1656490148773" clover="3.2.0">
-  <project timestamp="1656490148774" name="All files">
-    <metrics statements="84" coveredstatements="66" conditionals="11" coveredconditionals="8" methods="16" coveredmethods="13" elements="111" coveredelements="87" complexity="0" loc="84" ncloc="84" packages="4" files="6" classes="6"/>
+<coverage generated="1656514483525" clover="3.2.0">
+  <project timestamp="1656514483525" name="All files">
+    <metrics statements="81" coveredstatements="64" conditionals="11" coveredconditionals="8" methods="16" coveredmethods="13" elements="108" coveredelements="85" complexity="0" loc="81" ncloc="81" packages="4" files="6" classes="6"/>
     <package name="src">
       <metrics statements="18" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
       <file name="dbConfig.js" path="/code/src/dbConfig.js">
@@ -30,18 +30,17 @@
       </file>
     </package>
     <package name="src.api">
-      <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="trivia.js" path="/code/src/api/trivia.js">
-        <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="16" count="5" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
       </file>
     </package>
     <package name="src.controllers">
@@ -60,9 +59,9 @@
       </file>
     </package>
     <package name="src.models">
-      <metrics statements="48" coveredstatements="33" conditionals="9" coveredconditionals="7" methods="14" coveredmethods="11"/>
+      <metrics statements="46" coveredstatements="32" conditionals="9" coveredconditionals="7" methods="14" coveredmethods="11"/>
       <file name="game.js" path="/code/src/models/game.js">
-        <metrics statements="38" coveredstatements="23" conditionals="9" coveredconditionals="7" methods="10" coveredmethods="7"/>
+        <metrics statements="36" coveredstatements="22" conditionals="9" coveredconditionals="7" methods="10" coveredmethods="7"/>
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
@@ -92,10 +91,8 @@
         <line num="60" count="2" type="cond" truecount="3" falsecount="1"/>
         <line num="61" count="2" type="stmt"/>
         <line num="62" count="2" type="stmt"/>
-        <line num="63" count="2" type="stmt"/>
         <line num="64" count="2" type="stmt"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
