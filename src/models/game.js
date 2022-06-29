@@ -57,14 +57,12 @@ class Game {
   }
 
   static updatePlayerName({ id, name }) {
-    const updatedPlayerList = Game.players.forEach((player) => {
+    Game.players.forEach((player) => {
       if (player.id === id) {
         player.name = name
       }
     })
-
     console.log('CCCCCC -> ', Game.players)
-    Game.players = updatedPlayerList
   }
 
   nextQuestion() {
