@@ -113,7 +113,16 @@ io.on('connection', (socket) => {
   //     player.resetPlayerScore()
   //   }
 
+  socket.on('getPlayersData', ({ questionScore }) => {
+    console.log('getPlayersData -> ', Game.players)
+    console.log('** ** ', questionScore)
+    player.updatePlayerScore({ questionScore })
+    socket.emit('scoreBoard', Game.players)
+  })
+
   socket.on('gameover', () => {
+    Game.addScoreToDatabase(player)
+    socket.emit('scoreBoard', Game.players)
     console.log('resetting player score (BEFORE) :', player.getPlayerScore())
     player.resetPlayerScore()
     console.log('resetting player score (AFTER) :', player.getPlayerScore())
