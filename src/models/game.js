@@ -61,6 +61,7 @@ class Game {
       if (player.id === id) {
         player.name = name
       }
+      console.log('DDDDD ->', player)
     })
     console.log('CCCCCC -> ', Game.players)
   }
