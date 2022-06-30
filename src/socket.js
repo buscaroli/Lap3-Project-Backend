@@ -25,9 +25,9 @@ io.on('connection', (socket) => {
   }
   // console.log('***** ***** *****', socket.handshake.query.name)
   if (Game.players.length === 0) {
-    if (socket.handshake.query.name !== 'Admin') {
-      socket.emit('hostStatus', { hostStatus: true })
-    }
+    socket.handshake.query.name === 'Admin'
+      ? socket.disconnect()
+      : socket.emit('hostStatus', { hostStatus: true })
   } else {
     socket.emit('hostStatus', { hostStatus: false })
   }
