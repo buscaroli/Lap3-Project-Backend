@@ -88,6 +88,11 @@ class Game {
         this.questionsAmount
       )
       console.log('*+*+*', data.data.results)
+
+      for (let i = 0; i < data.data.resultslength; i++) {
+        data.data.results[i] = data.data.results[i].replace(/&quot;/g, '"')
+        data.data.results[i] = data.data.results[i].replace(/&#039;/g, "'")
+      }
       this.questionsList = data.data.results
     } catch (err) {
       console.log('Error: ', err)
