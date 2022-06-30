@@ -10,7 +10,7 @@ class Game {
     this.counter = 0
   }
 
-  static maxPlayers = 4
+  static maxPlayers = 100
   static players = []
 
   static removePlayerFromList(id) {
