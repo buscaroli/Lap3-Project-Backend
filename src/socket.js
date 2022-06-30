@@ -130,16 +130,23 @@ io.on('connection', (socket) => {
   })
 
   socket.on('gameover', () => {
-    console.log('gameover - player -> ', player)
+    console.log('***** gameover - player -> ', player)
 
     Game.addScoreToDatabase(player)
 
-    socket.emit('scoreBoard', Game.players)
+    // socket.emit('scoreBoard', Game.players)
 
-    console.log('resetting player score (BEFORE) :', player.getPlayerScore())
+    console.log(
+      '***** resetting player score (BEFORE) :',
+      player.getPlayerScore()
+    )
+
     socket.disconnect()
+
     player.resetPlayerScore()
-    // Game.removePlayerFromList(socket.id)
-    // console.log('resetting player score (AFTER) :', player.getPlayerScore())
+
+    console.log('resetting player score (AFTER) :', player.getPlayerScore())
+
+    Game.removePlayerFromList(socket.id)
   })
 })
