@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1656576949772" clover="3.2.0">
-  <project timestamp="1656576949773" name="All files">
-    <metrics statements="88" coveredstatements="64" conditionals="13" coveredconditionals="8" methods="19" coveredmethods="13" elements="120" coveredelements="85" complexity="0" loc="88" ncloc="88" packages="4" files="6" classes="6"/>
+<coverage generated="1656597678552" clover="3.2.0">
+  <project timestamp="1656597678553" name="All files">
+    <metrics statements="88" coveredstatements="66" conditionals="13" coveredconditionals="8" methods="19" coveredmethods="14" elements="120" coveredelements="88" complexity="0" loc="88" ncloc="88" packages="4" files="6" classes="6"/>
     <package name="src">
       <metrics statements="18" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
       <file name="dbConfig.js" path="/code/src/dbConfig.js">
@@ -59,7 +59,7 @@
       </file>
     </package>
     <package name="src.models">
-      <metrics statements="53" coveredstatements="32" conditionals="11" coveredconditionals="7" methods="17" coveredmethods="11"/>
+      <metrics statements="53" coveredstatements="34" conditionals="11" coveredconditionals="7" methods="17" coveredmethods="12"/>
       <file name="game.js" path="/code/src/models/game.js">
         <metrics statements="41" coveredstatements="22" conditionals="11" coveredconditionals="7" methods="12" coveredmethods="7"/>
         <line num="1" count="5" type="stmt"/>
@@ -105,7 +105,7 @@
         <line num="97" count="5" type="stmt"/>
       </file>
       <file name="player.js" path="/code/src/models/player.js">
-        <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
         <line num="3" count="9" type="stmt"/>
         <line num="4" count="9" type="stmt"/>
         <line num="5" count="9" type="stmt"/>
@@ -115,8 +115,8 @@
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
         <line num="29" count="3" type="stmt"/>
       </file>
     </package>
