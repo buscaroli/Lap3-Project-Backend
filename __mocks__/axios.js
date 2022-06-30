@@ -9,7 +9,7 @@ const get = (url) => {
         results: [
           {
             category: 'Entertainment: Film',
-            type: 'multiple',
+            type: 'Test',
             difficulty: 'easy',
             question:
               'Daniel Radcliffe became a global star in the film industry due to his performance in which film franchise?',
