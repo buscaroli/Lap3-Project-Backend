@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.76% </span>
+                <span class="strong">59.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>23/42</span>
+                <span class='fraction'>28/47</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.63% </span>
+                <span class="strong">72.72% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/11</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.33% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>7/12</span>
+                <span class='fraction'>9/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.65% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/41</span>
+                <span class='fraction'>27/45</span>
             </div>
         
             
@@ -160,7 +160,13 @@
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,7 +182,7 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,13 +225,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -248,6 +254,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -269,7 +281,7 @@ class Game {
     this.counter = 0
   }
 &nbsp;
-  static maxPlayers = 4
+  static maxPlayers = 100
   static players = []
 &nbsp;
   static removePlayerFromList(id) {
@@ -315,14 +327,14 @@ class Game {
     }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  st</span>atic updatePlayerName({ id, name }) {
-<span class="cstat-no" title="statement not covered" >    Game.players.forEach(<span class="fstat-no" title="function not covered" >(p</span>layer) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (player.id === id) {</span>
-<span class="cstat-no" title="statement not covered" >        player.updatePlayerName(name)</span>
+  static updatePlayerName({ id, name }) {
+    Game.players.forEach((player) =&gt; {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (player.id === id) {
+        player.updatePlayerName(name)
       }
-<span class="cstat-no" title="statement not covered" >      console.log('DDDDD -&gt;', player)</span>
+      console.log('DDDDD -&gt;', player)
     })
-<span class="cstat-no" title="statement not covered" >    console.log('CCCCCC -&gt; ', Game.players)</span>
+    console.log('CCCCCC -&gt; ', Game.players)
   }
 &nbsp;
   nextQuestion() {
@@ -346,6 +358,12 @@ class Game {
         this.difficulty,
         this.questionsAmount
       )
+<span class="cstat-no" title="statement not covered" >      console.log('*+*+*', data.data.results)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      for (let i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; data.data.resultslength; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        data.data.results[i] = data.data.results[i].replace(/&amp;quot;/g, '"')</span>
+<span class="cstat-no" title="statement not covered" >        data.data.results[i] = data.data.results[i].replace(/&amp;#039;/g, "'")</span>
+      }
 <span class="cstat-no" title="statement not covered" >      this.questionsList = data.data.results</span>
     } catch (err) {
 <span class="cstat-no" title="statement not covered" >      console.log('Error: ', err)</span>
@@ -361,7 +379,7 @@ module.exports = Game
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Jun 30 2022 14:08:38 GMT+0000 (Coordinated Universal Time)
+                at Thu Jun 30 2022 16:47:52 GMT+0000 (Coordinated Universal Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
