@@ -87,6 +87,7 @@ class Game {
         this.difficulty,
         this.questionsAmount
       )
+      console.log('*+*+*', data.data.results)
       this.questionsList = data.data.results
     } catch (err) {
       console.log('Error: ', err)

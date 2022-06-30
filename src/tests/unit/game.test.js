@@ -1,3 +1,4 @@
+jest.mock('axios')
 const Game = require('../../models/game')
 const Player = require('../../models/player')
 
@@ -80,4 +81,6 @@ describe('game', () => {
     console.log('999990 ', Game.players)
     expect(Game.players[0].name).toBe('John')
   })
+
+  it('tests it throws when adding a new player after finishing the game id data is not correct', () => {})
 })
