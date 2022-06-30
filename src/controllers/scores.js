@@ -5,6 +5,7 @@ const Game = require('../models/game')
 
 router.get('/', async (req, res) => {
   try {
+    console.log('********** REQ', req.body)
     const leaderboard = await Game.getLeaderboard()
     // console.log('** Leaderboard ** ', leaderboard)
     res.send(leaderboard)

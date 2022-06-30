@@ -1,3 +1,4 @@
+jest.mock('axios')
 const Game = require('../../models/game')
 const Player = require('../../models/player')
 
@@ -44,7 +45,6 @@ describe('game', () => {
 
   afterEach(() => {
     Game.players = []
-    Game.players.push(player)
   })
 
   it('tests it can remove a player from the players list', () => {
@@ -74,4 +74,13 @@ describe('game', () => {
   })
 
   it('tests the user can be saved in the database', () => {})
+
+  it('tests the username can be updated', () => {
+    console.log('99999 ', Game.players)
+    Game.updatePlayerName({ id: 'qwe123', name: 'John' })
+    console.log('999990 ', Game.players)
+    expect(Game.players[0].name).toBe('John')
+  })
+
+  it('tests it throws when adding a new player after finishing the game id data is not correct', () => {})
 })
