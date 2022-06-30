@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1656597678552" clover="3.2.0">
-  <project timestamp="1656597678553" name="All files">
+<coverage generated="1656598118317" clover="3.2.0">
+  <project timestamp="1656598118318" name="All files">
     <metrics statements="88" coveredstatements="66" conditionals="13" coveredconditionals="8" methods="19" coveredmethods="14" elements="120" coveredelements="88" complexity="0" loc="88" ncloc="88" packages="4" files="6" classes="6"/>
     <package name="src">
       <metrics statements="18" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
@@ -106,9 +106,9 @@
       </file>
       <file name="player.js" path="/code/src/models/player.js">
         <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
-        <line num="3" count="9" type="stmt"/>
-        <line num="4" count="9" type="stmt"/>
-        <line num="5" count="9" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="5" count="10" type="stmt"/>
         <line num="9" count="3" type="stmt"/>
         <line num="10" count="3" type="stmt"/>
         <line num="14" count="1" type="stmt"/>

@@ -26,8 +26,9 @@ io.on('connection', (socket) => {
   }
   // console.log('***** ***** *****', socket.handshake.query.name)
   if (Game.players.length === 0) {
-    // if (socket.handshake.query.name === 'Admin') {
-    socket.emit('hostStatus', { hostStatus: true })
+    socket.handshake.query.name === 'Admin'
+      ? socket.disconnect()
+      : socket.emit('hostStatus', { hostStatus: true })
   } else {
     socket.emit('hostStatus', { hostStatus: false })
   }
@@ -149,16 +150,21 @@ io.on('connection', (socket) => {
   })
 
   socket.on('gameover', () => {
-    console.log('gameover - player -> ', player)
+    console.log('***** gameover - player -> ', player)
 
     Game.addScoreToDatabase(player)
 
-    socket.emit('scoreBoard', Game.players)
+    console.log(
+      '***** resetting player score (BEFORE) :',
+      player.getPlayerScore()
+    )
 
-    console.log('resetting player score (BEFORE) :', player.getPlayerScore())
     socket.disconnect()
+
     player.resetPlayerScore()
+
+    console.log('resetting player score (AFTER) :', player.getPlayerScore())
+
     Game.removePlayerFromList(socket.id)
-    // console.log('resetting player score (AFTER) :', player.getPlayerScore())
   })
 })
