@@ -1,4 +1,4 @@
-// jest.mock('../../api/trivia')
+jest.mock('axios')
 const getQuestions = require('../../api/trivia')
 
 describe('trivia', () => {
@@ -9,9 +9,16 @@ describe('trivia', () => {
     expect(res.data.results.length).toBe(3)
   })
 
-  it('expects the fetch call to return an empty array if passing unsupported data', async () => {
+  it('tests the function returns an empty array if passing unsupported data', async () => {
     const res = await getQuestions('fail', 'killer', 10000)
     // console.log('---------------', res)
     expect(res.data.results.length).toBe(0)
   })
+
+  // it('tests that the function can catch the error if the API server is down', () => {
+
+  //   expect(async () => {
+  //     await getQuestions('error', 'hi', 100)
+  //   }).toThrow()
+  // })
 })
