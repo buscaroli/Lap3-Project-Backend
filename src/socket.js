@@ -11,7 +11,7 @@ const Game = require('./models/game')
 
 // creating an instance of the Game object
 let game
-
+Game.players = []
 io.on('connection', (socket) => {
   // limiting the number of players to a maximum of 'connectionsLimit'
   if (io.engine.clientsCount > Game.maxPlayers) {
@@ -24,8 +24,8 @@ io.on('connection', (socket) => {
     return
   }
   // console.log('***** ***** *****', socket.handshake.query.name)
-  // if (Game.players.length === 0) {
-  if (socket.handshake.query.name === 'Admin') {
+  if (Game.players.length === 0) {
+    // if (socket.handshake.query.name === 'Admin') {
     socket.emit('hostStatus', { hostStatus: true })
   } else {
     socket.emit('hostStatus', { hostStatus: false })
