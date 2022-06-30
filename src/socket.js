@@ -139,6 +139,7 @@ io.on('connection', (socket) => {
     console.log('resetting player score (BEFORE) :', player.getPlayerScore())
     socket.disconnect()
     player.resetPlayerScore()
+    Game.removePlayerFromList(socket.id)
     // console.log('resetting player score (AFTER) :', player.getPlayerScore())
   })
 })
