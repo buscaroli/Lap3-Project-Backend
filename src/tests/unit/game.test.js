@@ -72,4 +72,6 @@ describe('game', () => {
     game.nextQuestion()
     expect(game.nextQuestion().category).toBe('Test')
   })
+
+  it('tests the user can be saved in the database', () => {})
 })

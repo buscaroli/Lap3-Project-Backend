@@ -32,4 +32,10 @@ describe('player', () => {
     james.updatePlayerScore({ questionScore: 35 })
     expect(james.getPlayerScore()).toBe(35)
   })
+
+  it('tests a players name can be updated', () => {
+    james.updatePlayerName('Andrew')
+
+    expect(james.name).toBe('Andrew')
+  })
 })

@@ -12,6 +12,7 @@ const Game = require('./models/game')
 // creating an instance of the Game object
 let game
 Game.players = []
+
 io.on('connection', (socket) => {
   // limiting the number of players to a maximum of 'connectionsLimit'
   if (io.engine.clientsCount > Game.maxPlayers) {
@@ -121,6 +122,15 @@ io.on('connection', (socket) => {
     console.log('BBBBBB', name)
     player.updatePlayerName(name)
     socket.emit('scoreBoard', Game.players)
+
+    const firstPlayer = Game.players[0]
+    const firstPlayerId = firstPlayer.id
+    console.log('firstplayerID: ', firstPlayerId)
+    const currentPlayerId = socket.id
+
+    if (currentPlayerId === firstPlayerId) {
+      socket.emit('hostStatus', { hostStatus: true })
+    }
   })
 
   socket.on('getPlayersData', ({ questionScore }) => {
@@ -128,6 +138,15 @@ io.on('connection', (socket) => {
     console.log('** ** ', questionScore)
     player.updatePlayerScore({ questionScore })
     socket.emit('scoreBoard', Game.players)
+
+    const firstPlayer = Game.players[0]
+    const firstPlayerId = firstPlayer.id
+    console.log('firstplayerID: ', firstPlayerId)
+    const currentPlayerId = socket.id
+
+    if (currentPlayerId === firstPlayerId) {
+      socket.emit('hostStatus', { hostStatus: true })
+    }
   })
 
   socket.on('gameover', () => {
