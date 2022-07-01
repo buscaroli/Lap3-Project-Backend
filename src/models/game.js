@@ -57,6 +57,11 @@ class Game {
     }
   }
 
+  static dumpNonHostPlayers() {
+    const admin = Game.players.filter((x) => x.name === 'Admin')
+    Game.players = admin
+  }
+
   static updatePlayerName({ id, name }) {
     Game.players.forEach((player) => {
       if (player.id === id) {
