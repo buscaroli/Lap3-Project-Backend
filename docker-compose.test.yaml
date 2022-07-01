@@ -11,6 +11,7 @@ services:
     depends_on:
       - db
     tty: true
+    
   db:
     container_name: quizzer_test_db
     volumes:

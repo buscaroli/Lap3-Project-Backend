@@ -2,14 +2,6 @@ jest.mock('axios')
 const Game = require('../../models/game')
 const Player = require('../../models/player')
 
-// Game.addScoreToDatabase = jest.fn(() => {
-//   return {
-//     id: 'zxc789',
-//     name: 'Walter',
-//     score: 10000,
-//   }
-// })
-
 describe('game', () => {
   let game = new Game()
   let player
@@ -81,20 +73,9 @@ describe('game', () => {
     expect(game.nextQuestion().category).toBe('Test')
   })
 
-  // it('tests the user can be saved in the database', async () => {
-  //   const res = await Game.addScoreToDatabase({
-  //     id: 'qwerty',
-  //     name: 'Mark',
-  //     score: 200,
-  //   })
-  //   console.log('555555555 ', res)
-  //   expect(res.id).toEqual('zxc789')
-  // })
-
   it('tests the username can be updated', () => {
-    console.log('99999 ', Game.players)
     Game.updatePlayerName({ id: 'qwe123', name: 'John' })
-    console.log('999990 ', Game.players)
+
     expect(Game.players[0].name).toBe('John')
   })
 
