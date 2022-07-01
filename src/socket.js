@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
   // if (Game.players.length === 0) {
   // if (socket.handshake.query.name === 'admin') {
   // if (Game.players.length === 0) {
-  if (socket.handshake.query.name === 'Host') {
+  if (socket.handshake.query.name === 'Admin') {
     socket.emit('hostStatus', { hostStatus: true })
   } else {
     socket.emit('hostStatus', { hostStatus: false })
