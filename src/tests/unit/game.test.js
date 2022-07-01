@@ -73,12 +73,9 @@ describe('game', () => {
     expect(game.nextQuestion().category).toBe('Test')
   })
 
-  it('tests the user can be saved in the database', () => {})
-
   it('tests the username can be updated', () => {
-    console.log('99999 ', Game.players)
     Game.updatePlayerName({ id: 'qwe123', name: 'John' })
-    console.log('999990 ', Game.players)
+
     expect(Game.players[0].name).toBe('John')
   })
 

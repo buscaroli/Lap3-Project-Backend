@@ -6,13 +6,10 @@ class Player {
   }
 
   getPlayerScore() {
-    console.log('player.js - score -> ', this.score)
     return this.score
   }
 
   updatePlayerScore({ questionScore }) {
-    console.log('player.js - score -> ', this.score)
-    console.log('player.js - questionScore -> ', questionScore)
     this.score += questionScore
   }
 
@@ -21,7 +18,6 @@ class Player {
   }
 
   updatePlayerName(name) {
-    console.log('Updating player name to ', name)
     this.name = name
   }
 }

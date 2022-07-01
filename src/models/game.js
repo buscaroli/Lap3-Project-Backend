@@ -29,9 +29,10 @@ class Game {
         )
 
         const newPlayer = new Player(newPlayerData.rows[0])
+
         resolve(newPlayer)
       } catch (err) {
-        reject('Unable to add the score.')
+        reject('Unable to add the score to the DB: ', err)
       }
     })
   }
@@ -61,9 +62,7 @@ class Game {
       if (player.id === id) {
         player.updatePlayerName(name)
       }
-      console.log('DDDDD ->', player)
     })
-    console.log('CCCCCC -> ', Game.players)
   }
 
   nextQuestion() {
@@ -87,7 +86,6 @@ class Game {
         this.difficulty,
         this.questionsAmount
       )
-      console.log('*+*+*', data.data.results)
 
       for (let i = 0; i < data.data.resultslength; i++) {
         data.data.results[i] = data.data.results[i].replace(/&quot;/g, '"')
