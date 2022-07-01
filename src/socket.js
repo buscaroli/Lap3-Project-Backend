@@ -24,11 +24,12 @@ io.on('connection', (socket) => {
     console.log(`Client ${socket.id} has been disconnected`)
     return
   }
-  // console.log('***** ***** *****', socket.handshake.query.name)
+  
   if (Game.players.length === 0) {
-    socket.handshake.query.name === 'Admin'
-      ? socket.disconnect()
-      : socket.emit('hostStatus', { hostStatus: true })
+    // if (socket.handshake.query.name === 'admin') {
+  // if (Game.players.length === 0) {
+  if (socket.handshake.query.name === 'Host') {
+    socket.emit('hostStatus', { hostStatus: true })
   } else {
     socket.emit('hostStatus', { hostStatus: false })
   }
@@ -44,9 +45,6 @@ io.on('connection', (socket) => {
   Game.players.push(player)
 
   socket.on('disconnect', () => {
-    let hostId = Game.getHostId()
-    let currentPlayerId = socket.id
-
     Game.removePlayerFromList(socket.id)
   })
 
