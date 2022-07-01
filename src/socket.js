@@ -35,6 +35,7 @@ io.on('connection', (socket) => {
   }
 
   console.log('a player just connected')
+  console.log('Players: ', Game.players)
 
   // save the connection Id and the player Name
   const playerId = socket.id
