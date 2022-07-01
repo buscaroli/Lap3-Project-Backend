@@ -24,16 +24,19 @@ io.on('connection', (socket) => {
     console.log(`Client ${socket.id} has been disconnected`)
     return
   }
-  // console.log('***** ***** *****', socket.handshake.query.name)
-  if (Game.players.length === 0) {
-    socket.handshake.query.name === 'Admin'
-      ? socket.disconnect()
-      : socket.emit('hostStatus', { hostStatus: true })
+
+  // if (Game.players.length === 0) {
+  // if (socket.handshake.query.name === 'admin') {
+  // if (Game.players.length === 0) {
+  if (socket.handshake.query.name === 'Admin') {
+    // Game.dumpNonHostPlayers()
+    socket.emit('hostStatus', { hostStatus: true })
   } else {
     socket.emit('hostStatus', { hostStatus: false })
   }
 
   console.log('a player just connected')
+  console.log('Players: ', Game.players)
 
   // save the connection Id and the player Name
   const playerId = socket.id
@@ -44,9 +47,6 @@ io.on('connection', (socket) => {
   Game.players.push(player)
 
   socket.on('disconnect', () => {
-    let hostId = Game.getHostId()
-    let currentPlayerId = socket.id
-
     Game.removePlayerFromList(socket.id)
   })
 
