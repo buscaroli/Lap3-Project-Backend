@@ -24,9 +24,9 @@ io.on('connection', (socket) => {
     console.log(`Client ${socket.id} has been disconnected`)
     return
   }
-  
-  if (Game.players.length === 0) {
-    // if (socket.handshake.query.name === 'admin') {
+
+  // if (Game.players.length === 0) {
+  // if (socket.handshake.query.name === 'admin') {
   // if (Game.players.length === 0) {
   if (socket.handshake.query.name === 'Host') {
     socket.emit('hostStatus', { hostStatus: true })
