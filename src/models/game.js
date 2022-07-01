@@ -60,6 +60,7 @@ class Game {
   static dumpNonHostPlayers() {
     const admin = Game.players.filter((x) => x.name === 'Admin')
     Game.players = admin
+    console.log('Players after resetting host: ', Game.players)
   }
 
   static updatePlayerName({ id, name }) {
